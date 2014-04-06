@@ -7,6 +7,6 @@ class SlimI18n < Slim::Filter
     stuffed = str.gsub(/(\\\\)|\\(\$)|\$([\.\w]+)|\${([^}]+)}/){ $1 || $2 || "\#{t('#{$3||$4}')}" }
     [:slim, :interpolate, stuffed]
   end
+  
+  Slim::Engine.before(Slim::Interpolation, self)
 end
-
-Slim::Engine.before(Slim::Interpolation, self)
