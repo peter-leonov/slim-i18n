@@ -4,7 +4,7 @@ class SlimI18n < Slim::Filter
     # $2: treat \$ as $
     # $3: $a.b.c form
     # $4: ${…} form
-    stuffed = str.gsub(/(\\\\)|\\(\$)|\$([\.\w]+)|\${([^}]+)}/){ $1 || $2 || "\#{t('#{$3||$4}')}" }
+    stuffed = str.gsub(/(\\\\)|\\(\$)|\$([\.\-\w]+)|\${([^}]+)}/){ $1 || $2 || "\#{t('#{$3||$4}')}" }
     [:slim, :interpolate, stuffed]
   end
   
